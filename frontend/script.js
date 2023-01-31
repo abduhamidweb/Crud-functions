@@ -32,13 +32,15 @@ function renderdata(data) {
 }
 function deleteData(id) {
   if (id) {
-        fetch(`http://localhost:3000/images/${id}`, {
-          method: 'DELETE',
-          headers: {
-            accept: "application/json"
-          },
-          body: JSON.stringify({})
-        })
+    console.log(id);
+    const deleteMethod = {
+      method: 'DELETE', // Method itself
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8' // Indicates the content 
+      },
+      // No need to have body, because we don't send nothing to the server.
+    }
+        fetch(`http://localhost:3000/images/${id}`,deleteMethod).then(res =>res.json()).then(data => console.log(data))
 }
 }
   deleteData()
